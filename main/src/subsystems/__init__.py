@@ -1,9 +1,6 @@
 from . import climber
 from .climber import Climber
 
-from . import intake
-from .intake import Intake
-
 from . import chassis_heading_control
 from .chassis_heading_control import ChassisHeadingControl
 
@@ -15,6 +12,3 @@ from .sysid import swerve_system_id
 
 from . import trajectoryfollowing
 from .trajectoryfollowing import TrajectoryFollowing
-
-from . import limelight_positioning
-from .limelight_positioning import LimeLightPositioning

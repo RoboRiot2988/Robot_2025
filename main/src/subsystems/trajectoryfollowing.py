@@ -11,7 +11,8 @@ from swerve import SwerveDrive
 import commands2
 import pathplannerlib
 from pathplannerlib.auto import AutoBuilder
-from pathplannerlib.config import HolonomicPathFollowerConfig, ReplanningConfig, PIDConstants
+from pathplannerlib.controller import PPHolonomicDriveController
+from pathplannerlib.config import RobotConfig, PIDConstants
 from config import ModulePosition
 
 class TrajectoryFollowing(Subsystem):
@@ -26,13 +27,13 @@ class TrajectoryFollowing(Subsystem):
         wheel_location = front_left_module.location
         drive_base_radius = math.sqrt(wheel_location.x ** 2 + wheel_location.y ** 2)
         super().__init__()
-        AutoBuilder.configureHolonomic(
+        AutoBuilder.configure(
             lambda: self._swerve_drive.pose,  # Robot pose supplier
             self._swerve_drive.reset_pose,  # Method to reset odometry (will be called if your auto has a starting pose)
             lambda: self._swerve_drive.measured_chassis_speed,  # ChassisSpeeds supplier. MUST BE ROBOT RELATIVE
             self._swerve_drive.drive_with_chassis_speeds,
             # Method that will drive the robot given ROBOT RELATIVE ChassisSpeeds
-            HolonomicPathFollowerConfig(  # HolonomicPathFollowerConfig, this should likely live in your Constants class
+            PPHolonomicDriveController(  # HolonomicPathFollowerConfig, this should likely live in your Constants class
                 PIDConstants(axis_config.p,
                              axis_config.i,
                              axis_config.d),  # Translation PID constants

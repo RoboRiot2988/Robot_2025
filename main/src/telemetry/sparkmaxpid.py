@@ -3,7 +3,7 @@ import rev
 
 class SparkMaxPIDEntry(ntcore.NTSendable):
     """ This is a class that is used to publish PID values to the network table for SparkMaxControllers"""
-    _pid: rev.SparkMaxPIDController
+    _pid: rev.SparkClosedLoopController
     _setpoint: float
 
     def initSendable(self, builder: ntcore.NTSendableBuilder) -> None:
@@ -22,7 +22,7 @@ class SparkMaxPIDEntry(ntcore.NTSendable):
         self._pid.setReference(value, self._reference_type)
         self._setpoint = value
 
-    def __init__(self, name: str, pid: rev.SparkMaxPIDController, reference_type: rev.CANSparkMax.ControlType):
+    def __init__(self, name: str, pid: rev.SparkClosedLoopController, reference_type: rev.SparkMax.ControlType):
         super().__init__()
         self._pid = pid
         self._reference_type = reference_type

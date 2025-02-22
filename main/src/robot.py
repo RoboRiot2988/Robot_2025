@@ -39,7 +39,6 @@ import commands2.button
 from wpilib import DriverStation
 from wpimath.controller import ProfiledPIDControllerRadians
 from wpimath.trajectory import TrapezoidProfile
-from subsystems.photonvision import PhotonVisionAprilTagDetector
 import math
 
 from robots import crescendo as robot_config
@@ -86,7 +85,6 @@ class MyRobot(commands2.TimedCommandRobot):
 
     _target_heading_mappings: dict[tuple[commands2.button.CommandGenericHID, int], tuple[float, float]]
 
-    apriltagfieldlayout: robotpy_apriltag.AprilTagFieldLayout
 
     # auto_options: list[autos.AutoFactory]
 

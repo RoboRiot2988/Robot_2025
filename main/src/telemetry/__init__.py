@@ -10,7 +10,6 @@ from . import chassis_heading_telemetry
 from .chassis_heading_telemetry import ChassisHeadingTelemetry, AxisPositionTelemetry
 from .shooter_telemetry import ShooterTelemetry
 from .intake_telemetry import IntakeTelemetry
-from .indexer_telemetry import IndexerTelemetry
 from .climber_telemetry import ClimberTelemetry
 from .limelight_nettables import LimeLightNetTables
 import wpilib
