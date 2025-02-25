@@ -135,8 +135,8 @@ class MyRobot(commands2.TimedCommandRobot):
         self.field = wpilib.Field2d()
         sd.putData("Field", self.field)  # TODO: Does this only need to be called once?
 
-        self.apriltagfieldlayout = robotpy_apriltag.loadAprilTagLayoutField(
-            robotpy_apriltag.AprilTagField.k2024Crescendo)
+        # self.apriltagfieldlayout = robotpy_apriltag.loadAprilTagLayoutField(
+        #     robotpy_apriltag.AprilTagField.k2024Crescendo)
         # if robot_config.physical_properties.gyro_on_spi:
         #     self._navx = navx.AHRS.create_spi()
         # else:
