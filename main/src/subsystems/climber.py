@@ -22,13 +22,13 @@ class Climber(commands2.Subsystem):
         super().__init__()
         self.config = config
         self._logger = logger.getChild("Climber")
-        self.climber_motor = rev.SparkMax(self.config.climber_motor.id, rev.SparkMax.MotorType.kBrushless)
+        self.climber_motor = rev.SparkMax(self.config.climber_motor.id, rev.SparkMax.MotorType.kBrushed)
         hardware.init_motor(self.climber_motor, config.climber_motor)
-        self.climber_encoder = self.climber_motor.getEncoder()
-        self.climber_encoder.setPosition(-1)
-        self.climber_motor.setIdleMode(self.climber_motor.getIdleMode().kBrake)
-        self._pid = self.climber_motor.getPIDController()
-        hardware.init_pid(self._pid, self.config.climber_pid, self.climber_encoder)
+        # self.climber_encoder = self.climber_motor.getEncoder()
+        # self.climber_encoder.setPosition(-1)
+        # self.climber_motor.setIdleMode(self.climber_motor.getIdleMode().kBrake)
+        # # self._pid = self.climber_motor.getPIDController()
+        # hardware.init_pid(self._pid, self.config.climber_pid, self.climber_encoder)
 
     def set_climber_motor_voltage(self, voltage: float):
         self.climber_motor.setVoltage(voltage)

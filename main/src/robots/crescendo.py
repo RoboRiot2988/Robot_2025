@@ -52,7 +52,9 @@ gamepad_controls = DriverControlsConfig(x_deadband=math_help.Range(0.10, 1),
 #                                intake_velocity=.4, shoot_velocity=1, outtake_velocity=-1)  # fix feeder_sensor_id
 # intake_config = IntakeConfig(MotorConfig(id=15, inverted=True), pid=PIDConfig(p=.000001, i=0, d=0, wrapping=None),
 #                              intake_velocity=.5, outtake_velocity=-1)
-climber_config = ClimberConfig(MotorConfig(id=14, inverted=False), climber_pid=PIDConfig(p=.2, i=0, d=0, wrapping=None),
+climber_config_left = ClimberConfig(MotorConfig(id=18, inverted=False), climber_pid=PIDConfig(p=.2, i=0, d=0, wrapping=None),
+                               climber_max=1)
+climber_config_right = ClimberConfig(MotorConfig(id=19, inverted=False), climber_pid=PIDConfig(p=.2, i=0, d=0, wrapping=None),
                                climber_max=1)
 
 # photon_camera_config = PhotonCameraConfig(camera_position=geom.Transform3d(geom.Translation3d(0, 0, 0), #camera postition on the robot xyz in meters from the center, CURRENTLY UNMEASURED
