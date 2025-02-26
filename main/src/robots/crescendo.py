@@ -151,4 +151,4 @@ standard_gamepad_drive_axis_config = AxisConfig(deadband=math_help.Range(0.10, 1
 
 standard_joystick_climber_axis_config = AxisConfig(deadband=math_help.Range(0.15, 1),
                                                    output_range=math_help.Range(-1,
-                                                                                ClimberConfig.climber_max))
+                                                                                climber_config_left.climber_max))

@@ -40,4 +40,4 @@ class Range:
     def __init__(self, min_val: float, max_val: float):
         self._min_val = min_val
         self._max_val = max_val
-        self._range = max_val - min_val
+        self._range = max_val + min_val
