@@ -148,10 +148,10 @@ class MyRobot(commands2.TimedCommandRobot):
 
         self.operator_control = commands2.button.CommandJoystick(2)  # if robot_config.has_mechanisms else None
 
-        #self.swerve_drive = swerve.SwerveDrive(self._navx, robot_config.swerve_modules,
-                                               #robot_config.physical_properties, self.logger)
-        self.swerve_telemetry = telemetry.SwerveTelemetry(self.swerve_drive, robot_config.physical_properties)
-        self.swerve_drive.initialize()
+        self.swerve_drive = swerve.SwerveDrive(self._navx, robot_config.swerve_modules,
+                                               robot_config.physical_properties, self.logger)
+        # self.swerve_telemetry = telemetry.SwerveTelemetry(self.swerve_drive, robot_config.physical_properties)
+        # self.swerve_drive.initialize()
         # self.limelight_positioning = subsystems.LimeLightPositioning(self.swerve_drive,
         #                                                              robot_config.limelight_camera_config,
         #                                                              self.logger)
