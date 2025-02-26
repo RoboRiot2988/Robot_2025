@@ -89,7 +89,7 @@ swerve_modules = {ModulePosition.front_left:
                                                                  current_limit=swerve_current_limit.angle),
                                          encoder=EncoderConfig(id_val=None, offset=None, conversion_factor=math.pi * 2,
                                                                inverted=False),
-                                         location=(10.375, 10.375),
+                                         location=(11.75, 12.75),
                                          angle_pid=default_angle_pid,
                                          drive_pid=default_drive_pid),
                   ModulePosition.front_right:
@@ -103,7 +103,7 @@ swerve_modules = {ModulePosition.front_left:
                                                                  current_limit=swerve_current_limit.angle),
                                          encoder=EncoderConfig(id_val=None, offset=None, conversion_factor=math.pi * 2,
                                                                inverted=False),
-                                         location=(10.375, -10.375),
+                                         location=(11.75, -12.75),
                                          angle_pid=default_angle_pid,
                                          drive_pid=default_drive_pid),
                   ModulePosition.back_right:
@@ -117,7 +117,7 @@ swerve_modules = {ModulePosition.front_left:
                                                                  current_limit=swerve_current_limit.angle),
                                          encoder=EncoderConfig(id_val=None, offset=None, conversion_factor=math.pi * 2,
                                                                inverted=False),
-                                         location=(-10.375, -10.375),
+                                         location=(-11.75, -12.75),
                                          angle_pid=default_angle_pid,
                                          drive_pid=default_drive_pid),
                   ModulePosition.back_left:
@@ -131,7 +131,7 @@ swerve_modules = {ModulePosition.front_left:
                                                                  current_limit=swerve_current_limit.angle),
                                          encoder=EncoderConfig(id_val=None, offset=None, conversion_factor=math.pi * 2,
                                                                inverted=False),
-                                         location=(-10.375, 10.375),
+                                         location=(-11.75, -12.75),
                                          angle_pid=default_angle_pid,
                                          drive_pid=default_drive_pid)
 
