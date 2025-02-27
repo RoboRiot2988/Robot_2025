@@ -1,4 +1,4 @@
-
+# WE DON'T HAVE _navx!!!
 import navx
 import commands2
 

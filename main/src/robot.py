@@ -1,3 +1,6 @@
+# _navx IS NEEDED IN 
+
+
 #!/usr/bin/env python3
 """
     This is a good foundation to build your robot code on
@@ -47,6 +50,8 @@ class MyRobot(commands2.TimedCommandRobot):
     _command_scheduler: commands2.CommandScheduler
 
     swerve_drive: SwerveDrive
+
+    # Telementry
     swerve_telemetry: telemetry.SwerveTelemetry
 
     heading_controller_telemetry: telemetry.ChassisHeadingTelemetry
@@ -61,8 +66,10 @@ class MyRobot(commands2.TimedCommandRobot):
     test_driver: TestDriver
     teleop_drive: TeleopDrive
     twinstick_teleop_drive: TwinStickTeleopDrive
+    # we don't have _navx, so the line below is commented out
     # _navx: navx.AHRS  # Attitude Heading Reference System
 
+    # Controls
     controller: commands2.button.CommandGenericHID
     joystick_one: commands2.button.CommandJoystick
     joystick_two: commands2.button.CommandJoystick

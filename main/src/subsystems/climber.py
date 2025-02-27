@@ -11,7 +11,8 @@ import hardware
 class Climber(commands2.Subsystem):
     climber_motor: rev.SparkMax
     climber_encoder: rev.RelativeEncoder#.EncoderType.kHallSensor
-    config: config.ClimberConfig
+    # THE ORIGINAL CODE FOR THE LINE BELOW IS: config: config.ClimberConfig
+    config: ClimberConfig
     _logger: logging.Logger
 
     @property
