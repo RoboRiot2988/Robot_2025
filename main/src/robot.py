@@ -68,6 +68,7 @@ class MyRobot(commands2.TimedCommandRobot):
     twinstick_teleop_drive: TwinStickTeleopDrive
     # we don't have _navx, so the line below is commented out
     # _navx: navx.AHRS  # Attitude Heading Reference System
+    _adxrs450:wpilib.ADXRS450_Gyro
 
     # Controls
     controller: commands2.button.CommandGenericHID
@@ -148,14 +149,14 @@ class MyRobot(commands2.TimedCommandRobot):
         #     self._navx = navx.AHRS.create_spi()
         # else:
         #     self._navx = navx.AHRS.create_i2c()
-
+        self._adxrs450 = wpilib.ADXRS450_Gyro()
         self.controller = commands2.button.CommandXboxController(0)
         self.joystick_one = commands2.button.CommandJoystick(0)
         self.joystick_two = commands2.button.CommandJoystick(1)
 
         self.operator_control = commands2.button.CommandJoystick(2)  # if robot_config.has_mechanisms else None
 
-        self.swerve_drive = swerve.SwerveDrive(self._navx, robot_config.swerve_modules,
+        self.swerve_drive = swerve.SwerveDrive(self._adxrs450, robot_config.swerve_modules,
                                                robot_config.physical_properties, self.logger)
         # self.swerve_telemetry = telemetry.SwerveTelemetry(self.swerve_drive, robot_config.physical_properties)
         # self.swerve_drive.initialize()
