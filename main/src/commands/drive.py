@@ -75,7 +75,7 @@ class Drive(commands2.Command):
 
 class SetTarget(commands2.Command):
     _set_heading_goal: Callable[[float], None]
-    _target_xy: [float, float]
+    _target_xy: [float, float] # type: ignore
     _get_chassis_xy: Callable[[], tuple[float, float]]
     is_heading_reversed: bool
 
