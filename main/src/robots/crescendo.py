@@ -15,20 +15,19 @@ from .common import swerve_current_limit, swerve_ramp_rate
 #Set to true if the robot has mechanisms beyond navigation, vision, and swerve
 has_mechanisms = True
 
-# swerve_drive_config = SparkMaxConfig()
-# swerve_drive_config.openLoopRampRate=0.25 # seconds
-# swerve_drive_config.closedLoopRampRate=0.25
-# swerve_drive_config.smartCurrentLimit(40)
-# swerve_drive_config.inverted = False
-# swerve_drive_config.IdleMode = SparkMaxConfig.IdleMode.kBrake
+swerve_drive_config = SparkMaxConfig()
+swerve_drive_config.openLoopRampRate(0.25) # seconds
+swerve_drive_config.closedLoopRampRate(0.25)
+swerve_drive_config.smartCurrentLimit(40)
+swerve_drive_config.inverted(False)
+swerve_drive_config.IdleMode(SparkMaxConfig.IdleMode.kBrake)
 
-
-# swerve_turn_config = SparkMaxConfig()
-# swerve_turn_config.openLoopRampRate=0.25 # seconds
-# swerve_turn_config.closedLoopRampRate=0.25
-# swerve_turn_config.smartCurrentLimit(30)
-# swerve_turn_config.inverted = True
-# swerve_turn_config.IdleMode = SparkMaxConfig.IdleMode.kBrake
+swerve_turn_config = SparkMaxConfig()
+swerve_turn_config.openLoopRampRate(0.25) # seconds
+swerve_turn_config.closedLoopRampRate(0.25)
+swerve_turn_config.smartCurrentLimit(30)
+swerve_turn_config.inverted(True)
+swerve_turn_config.IdleMode(SparkMaxConfig.IdleMode.kBrake)
 
 #drive_motor_config = SparkMaxConfig()
 
@@ -70,10 +69,10 @@ gamepad_controls = DriverControlsConfig(x_deadband=math_help.Range(0.10, 1),
 #                                intake_velocity=.4, shoot_velocity=1, outtake_velocity=-1)  # fix feeder_sensor_id
 # intake_config = IntakeConfig(MotorConfig(id=15, inverted=True), pid=PIDConfig(p=.000001, i=0, d=0, wrapping=None),
 #                              intake_velocity=.5, outtake_velocity=-1)
-climber_config_left = ClimberConfig(MotorConfig(id=18, inverted=False), climber_pid=PIDConfig(p=.2, i=0, d=0, wrapping=None),
-                               climber_max=1)
-climber_config_right = ClimberConfig(MotorConfig(id=19, inverted=False), climber_pid=PIDConfig(p=.2, i=0, d=0, wrapping=None),
-                               climber_max=1)
+# climber_config_left = ClimberConfig(MotorConfig(id=18, inverted=False), climber_pid=PIDConfig(p=.2, i=0, d=0, wrapping=None),
+#                                climber_max=1)
+# climber_config_right = ClimberConfig(MotorConfig(id=19, inverted=False), climber_pid=PIDConfig(p=.2, i=0, d=0, wrapping=None),
+#                                climber_max=1)
 
 # photon_camera_config = PhotonCameraConfig(camera_position=geom.Transform3d(geom.Translation3d(0, 0, 0), #camera postition on the robot xyz in meters from the center, CURRENTLY UNMEASURED
 #                                                               geom.Rotation3d(0, 0, 0)), #camera rotation on the robot in degrees, CURRENTLY UNMEASURED
@@ -98,9 +97,9 @@ physical_properties = PhysicalConfig(wheel_diameter_cm=10.16,
 
 swerve_modules = {ModulePosition.front_left:
                       SwerveModuleConfig(drive_motor=MotorConfig(id=10, inverted=False,
-                                                                 motor_config = 0),
+                                                                 motor_config = swerve_drive_config),
                                          angle_motor=MotorConfig(id=11, inverted=True,
-                                                                 motor_config = 1),
+                                                                 motor_config = swerve_turn_config),
                                          encoder=EncoderConfig(id_val=None, offset=None, conversion_factor=math.pi * 2,
                                                                inverted=False),
                                          location=(11.75, 12.75),
@@ -108,9 +107,9 @@ swerve_modules = {ModulePosition.front_left:
                                          drive_pid=default_drive_pid),
                   ModulePosition.front_right:
                       SwerveModuleConfig(drive_motor=MotorConfig(id=12, inverted=False,
-                                                                 motor_config = 0),
+                                                                 motor_config = swerve_drive_config),
                                          angle_motor=MotorConfig(id=13, inverted=True,
-                                                                 motor_config = 1),
+                                                                 motor_config = swerve_turn_config),
                                          encoder=EncoderConfig(id_val=None, offset=None, conversion_factor=math.pi * 2,
                                                                inverted=False),
                                          location=(11.75, -12.75),
@@ -118,9 +117,9 @@ swerve_modules = {ModulePosition.front_left:
                                          drive_pid=default_drive_pid),
                   ModulePosition.back_right:
                       SwerveModuleConfig(drive_motor=MotorConfig(id=14, inverted=False,
-                                                                 motor_config = 0),
+                                                                 motor_config = swerve_drive_config),
                                          angle_motor=MotorConfig(id=15, inverted=True,
-                                                                 motor_config = 1),
+                                                                 motor_config = swerve_turn_config),
                                          encoder=EncoderConfig(id_val=None, offset=None, conversion_factor=math.pi * 2,
                                                                inverted=False),
                                          location=(-11.75, -12.75),
@@ -128,9 +127,9 @@ swerve_modules = {ModulePosition.front_left:
                                          drive_pid=default_drive_pid),
                   ModulePosition.back_left:
                       SwerveModuleConfig(drive_motor=MotorConfig(id=16, inverted=False,
-                                                                 motor_config = 0),
+                                                                 motor_config = swerve_drive_config),
                                          angle_motor=MotorConfig(id=17, inverted=True,
-                                                                 motor_config = 1),
+                                                                 motor_config = swerve_turn_config),
                                          encoder=EncoderConfig(id_val=None, offset=None, conversion_factor=math.pi * 2,
                                                                inverted=False),
                                          location=(-11.75, -12.75),
@@ -151,6 +150,6 @@ standard_gamepad_drive_axis_config = AxisConfig(deadband=math_help.Range(0.10, 1
                                                 output_range=math_help.Range(0,
                                                                              physical_properties.max_drive_speed))
 
-standard_joystick_climber_axis_config = AxisConfig(deadband=math_help.Range(0.15, 1),
-                                                   output_range=math_help.Range(-1,
-                                                                                climber_config_left.climber_max))
+# standard_joystick_climber_axis_config = AxisConfig(deadband=math_help.Range(0.15, 1),
+#                                                    output_range=math_help.Range(-1,
+#                                                                                 climber_config_left.climber_max))
