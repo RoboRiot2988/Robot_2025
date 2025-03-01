@@ -117,8 +117,8 @@ class SwerveModule(ISwerveModule):
 
         hardware.init_pid(self.angle_pid, module_config.angle_pid, feedback_device=self.angle_absolute_encoder)
 
-        hardware.safe_set_rev_in_thread(self._angle_motor.burnFlash)
-        hardware.safe_set_rev_in_thread(self._drive_motor.burnFlash)
+        hardware.safe_set_rev_in_thread(self._angle_motor.ResetMode)
+        hardware.safe_set_rev_in_thread(self._drive_motor.PersistMode)
 
     def stop(self):
         """Idle both motors"""

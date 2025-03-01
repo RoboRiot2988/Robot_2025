@@ -1,6 +1,5 @@
 # _navx IS NEEDED IN 
 
-
 #!/usr/bin/env python3
 """
     This is a good foundation to build your robot code on
@@ -278,14 +277,14 @@ class MyRobot(commands2.TimedCommandRobot):
         if robot_config.has_mechanisms:
             self.shooter = subsystems.Shooter(robot_config.shooter_config, robot_config.default_flywheel_pid,
                                               self.logger)
-            self.indexer = subsystems.Indexer(robot_config.indexer_config, self.logger)
+            # self.indexer = subsystems.Indexer(robot_config.indexer_config, self.logger)
             self.intake = subsystems.Intake(robot_config.intake_config, self.logger)
             self.climber = subsystems.Climber(robot_config.climber_config, self.logger)
             self.init_mechanism_telemetry()
 
-            self.joystick_one.button(1).toggleOnTrue(commands.Load(self.intake, self.indexer))
-            self.joystick_two.button(1).toggleOnTrue(commands.Shoot(self.shooter, self.indexer).andThen(
-                commands.FlipHeading(self.heading_command, self.target_pointer)))
+            # self.joystick_one.button(1).toggleOnTrue(commands.Load(self.intake, self.indexer))
+            # self.joystick_two.button(1).toggleOnTrue(commands.Shoot(self.shooter, self.indexer).andThen(
+            #     commands.FlipHeading(self.heading_command, self.target_pointer)))
             # self.joystick_one.button(2).toggleOnTrue(commands.Outtake(self.intake, self.indexer))
 
     def init_mechanism_telemetry(self):

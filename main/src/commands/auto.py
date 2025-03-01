@@ -66,7 +66,7 @@ class GotoXYTheta(commands2.Command):
     def target(self) -> tuple[float, float, float]:
         return self._destination_xyt
 
-    @target.setter
+    @target.SparkBase.configure()
     def target(self, value: tuple[float, float, float]):
         self._destination_xyt = value
         self._x_axis_pid.setGoal(value[0])

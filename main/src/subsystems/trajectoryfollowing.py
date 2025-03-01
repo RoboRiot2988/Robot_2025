@@ -42,7 +42,9 @@ class TrajectoryFollowing(Subsystem):
                              heading_config.d),  # Rotation PID constants
                 axis_config.profile.velocity,  # Max module speed, in m/s
                 drive_base_radius,  # Drive base radius in meters. Distance from robot center to furthest module.
-                ReplanningConfig()  # Default path replanning config. See the API for the options here
+
+                # Config might cause an error on the line below:
+                config.ReplanningConfig()  # Default path replanning config. See the API for the options here
             ),
             self.shouldFlipPath,  # Supplier to control path flipping based on alliance color
             self  # Reference to this subsystem to set requirements

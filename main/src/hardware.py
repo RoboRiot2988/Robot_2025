@@ -128,7 +128,7 @@ def adjust_pid(pid: rev.SparkClosedLoopController, pid_config: PIDConfig):
 
 
 def init_motor(motor: rev.SparkMax, config: MotorConfig):
-    motor.restoreFactoryDefaults()
+    motor.PersistMode()
     safe_set_rev_in_thread(motor.setIdleMode, rev.SparkMax.IdleMode.kCoast)
     safe_set_rev_in_thread(motor.setInverted, config.inverted)
     if config.open_ramp_rate is not None:
