@@ -16,10 +16,10 @@ def ShowMechansimPIDs(r):
     if not robot.robot_config.has_mechanisms:
         return
 
-    shooter_pid_entry = SparkMaxPIDEntry("Shooter PID", r.shooter.pid, rev.CANSparkMax.ControlType.kVelocity)
-    indexer_pid_entry = SparkMaxPIDEntry("Indexer PID", r.indexer.pid, rev.CANSparkMax.ControlType.kVelocity)
-    intake_pid_entry = SparkMaxPIDEntry("Intake PID", r.intake.pid, rev.CANSparkMax.ControlType.kVelocity)
-    climber_pid_entry = SparkMaxPIDEntry("Climber PID", r.climber.pid, rev.CANSparkMax.ControlType.kPosition)
+    shooter_pid_entry = SparkMaxPIDEntry("Shooter PID", r.shooter.pid, rev.SparkMax.ControlType.kVelocity)
+    indexer_pid_entry = SparkMaxPIDEntry("Indexer PID", r.indexer.pid, rev.SparkMax.ControlType.kVelocity)
+    intake_pid_entry = SparkMaxPIDEntry("Intake PID", r.intake.pid, rev.SparkMax.ControlType.kVelocity)
+    climber_pid_entry = SparkMaxPIDEntry("Climber PID", r.climber.pid, rev.SparkMax.ControlType.kPosition)
 
     sd.putData("Shooter PID", shooter_pid_entry)
     sd.putData("Indexer PID", indexer_pid_entry)

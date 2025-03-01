@@ -11,7 +11,7 @@
 #
 #
 # class Bar(commands2.Subsystem):
-#     _bar_motor: rev.CANSparkMax
+#     _bar_motor: rev.SparkMax
 #     _bar_encoder: rev.SparkRelativeEncoder
 #     _bar_pid: rev.SparkMaxPIDController
 #     config: BarConfig
@@ -22,7 +22,7 @@
 #         super().__init__()
 #         self._logger = logger.getChild("bar")
 #         self.config = config
-#         self._bar_motor = rev.CANSparkMax(config.bar_motor.id, rev.CANSparkMax.MotorType.kBrushless)
+#         self._bar_motor = rev.SparkMax(config.bar_motor.id, rev.SparkMax.MotorType.kBrushless)
 #         hardware.init_motor(self._bar_motor, config.bar_motor)
 #         self._bar_encoder = self._bar_motor.getEncoder()
 #         self._bar_encoder.setPositionConversionFactor(2 * math.pi)
@@ -53,7 +53,7 @@
 #     def velocity(self, value):
 #         if value == 0:
 #             self._bar_encoder.setPosition(0)
-#         self._bar_pid.setReference(value, rev.CANSparkMax.ControlType.kVelocity)
+#         self._bar_pid.setReference(value, rev.CSparkMax.ControlType.kVelocity)
 #
 #     # @property
 #     # def position(self):

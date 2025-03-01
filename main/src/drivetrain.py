@@ -6,7 +6,7 @@
 # from dataclasses import dataclass
 
 # # I DON'T KNOW IF NEO IS THE CORRECT MOTOR TYPE, AND THIS IS POSSIBLY AN ALTERNATIVE TO IMPORT REV THT CHAT GPT MADE
-# #from rev import CANSparkMax, Neo
+# #from rev import SparkMax, Neo
 
 # class DeadzoneMode(Enum):
 

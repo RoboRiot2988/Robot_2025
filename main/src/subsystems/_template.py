@@ -22,7 +22,7 @@
 #     _command_scheduler: commands2.CommandScheduler # An underscore in Python indicates the member is private
 #
 #     #Here are some examples of declaring a motor and a sensor from the rev package.
-#     #motor1 : rev.CANSparkMax
+#     #motor1 : rev.SparkMax
 #     #sensor1 : rev.CANSensor
 #
 #     def __init__(self, command_scheduler: commands2.CommandScheduler, logger: logging.Logger):
