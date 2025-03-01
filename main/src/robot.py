@@ -70,10 +70,10 @@ class MyRobot(commands2.TimedCommandRobot):
     _adxrs450:wpilib.ADXRS450_Gyro
 
     # Controls
-    controller: commands2.button.CommandGenericHID
+    #: commands2.button.CommandGenericHID
     joystick_one: commands2.button.CommandJoystick
-    joystick_two: commands2.button.CommandJoystick
-    operator_control: commands2.button.CommandJoystick | None = None
+    #joystick_two: commands2.button.CommandJoystick
+    #operator_control: commands2.button.CommandJoystick | None = None
 
     field: wpilib.Field2d
     # april_tag_one: PhotonVisionAprilTagDetector | None = None
@@ -149,11 +149,11 @@ class MyRobot(commands2.TimedCommandRobot):
         # else:
         #     self._navx = navx.AHRS.create_i2c()
         self._adxrs450 = wpilib.ADXRS450_Gyro()
-        self.controller = commands2.button.CommandXboxController(0)
+        #self.controller = commands2.button.CommandXboxController(0)
         self.joystick_one = commands2.button.CommandJoystick(0)
-        self.joystick_two = commands2.button.CommandJoystick(1)
+        #self.joystick_two = commands2.button.CommandJoystick(1)
 
-        self.operator_control = commands2.button.CommandJoystick(2)  # if robot_config.has_mechanisms else None
+        #self.operator_control = commands2.button.CommandJoystick(2)  # if robot_config.has_mechanisms else None
 
         self.swerve_drive = swerve.SwerveDrive(self._adxrs450, robot_config.swerve_modules,
                                                robot_config.physical_properties, self.logger)

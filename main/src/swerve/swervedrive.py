@@ -20,6 +20,7 @@ from . import ISwerveDrive, ISwerveModule
 import commands2
 import wpilib.sysid
 import math_help
+from rev import SparkMaxConfig
 
 
 class SwerveDrive(commands2.subsystem.Subsystem):
@@ -73,6 +74,21 @@ class SwerveDrive(commands2.subsystem.Subsystem):
 
     def __init__(self, gyro: wpilib.ADXRS450_Gyro, swerve_config: dict[ModulePosition, SwerveModuleConfig],
                  physical_config: PhysicalConfig, logger: logging.Logger):
+        
+        self.swerve_drive_config = SparkMaxConfig()
+        self.swerve_drive_config.openLoopRampRate=0.25 # seconds
+        self.swerve_drive_config.closedLoopRampRate=0.25
+        self.swerve_drive_config.smartCurrentLimit(40)
+        self.swerve_drive_config.inverted = False
+        self.swerve_drive_config.IdleMode = SparkMaxConfig.IdleMode.kBrake
+
+        self.swerve_turn_config = SparkMaxConfig()
+        self.swerve_turn_config.openLoopRampRate=0.25 # seconds
+        self.swerve_turn_config.closedLoopRampRate=0.25
+        self.swerve_turn_config.smartCurrentLimit(30)
+        self.swerve_turn_config.inverted = True
+        self.swerve_turn_config.IdleMode = SparkMaxConfig.IdleMode.kBrake
+
         self.gyro = wpilib.ADXRS450_Gyro()
         super().__init__()
         self.logger = logger.getChild("swerve")
@@ -83,7 +99,7 @@ class SwerveDrive(commands2.subsystem.Subsystem):
         self._modules = {}
         self._physical_config = physical_config
         for position, module_config in swerve_config.items():
-            self._modules[position] = SwerveModule(position, module_config, physical_config, self.logger)
+            self._modules[position] = SwerveModule(position, self.swerve_drive_config, physical_config, self.logger)
 
         self._ordered_modules = [self.modules[position] for position in sorted(self.modules.keys())]
         self.logger.info(f"Module Order: {[m.id for m in self._ordered_modules]}")

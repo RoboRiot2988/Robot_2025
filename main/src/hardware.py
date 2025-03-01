@@ -128,16 +128,17 @@ def adjust_pid(pid: rev.SparkClosedLoopController, pid_config: PIDConfig):
 
 
 def init_motor(motor: rev.SparkMax, config: MotorConfig):
-    motor.PersistMode()
-    safe_set_rev_in_thread(motor.setIdleMode, rev.SparkMax.IdleMode.kCoast)
-    safe_set_rev_in_thread(motor.setInverted, config.inverted)
-    if config.open_ramp_rate is not None:
-        safe_set_rev_in_thread(motor.setOpenLoopRampRate, config.open_ramp_rate)
-    if config.closed_ramp_rate is not None:
-        safe_set_rev_in_thread(motor.setOpenLoopRampRate, config.closed_ramp_rate)
-    if config.current_limit is not None:
-        safe_set_rev_in_thread(motor.setOpenLoopRampRate, config.current_limit)
 
+    motor.configure(config.motor_config, rev.SparkBase.ResetMode.kResetSafeParameters, rev.SparkBase.PersistMode.kPersistParameters)
+ 
+    #safe_set_rev_in_thread(motor.IdleMode, rev.SparkMax.IdleMode.kCoast)
+    #safe_set_rev_in_thread(motor.setInverted, config.inverted)
+    #if config.open_ramp_rate is not None:
+    #    safe_set_rev_in_thread(motor.get, config.open_ramp_rate)
+    #if config.closed_ramp_rate is not None:
+    #    safe_set_rev_in_thread(motor.openLoopRampRate, config.closed_ramp_rate)
+    #if config.current_limit is not None:
+    #    safe_set_rev_in_thread(motor.openLoopRampRate, config.current_limit)
 
 def create_profiled_pid_radians(pid_config: ProfiledPIDConfig) -> ProfiledPIDControllerRadians:
     pid = ProfiledPIDControllerRadians(

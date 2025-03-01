@@ -6,6 +6,8 @@ from config import PIDConfig, DriverControlsConfig, MotorConfig, ModulePosition,
     ProfiledPIDConfig, VelocityAccelerationConfig, PositionVelocityConfig, FeedForwardConfig, SwerveModuleIntProperty, \
     AxisConfig, PhotonCameraConfig, LimelightCameraConfig
 import wpimath.geometry as geom
+from rev import SparkMaxConfig
+
 from .common import swerve_current_limit, swerve_ramp_rate
 
 # Panel is #13
@@ -13,6 +15,22 @@ from .common import swerve_current_limit, swerve_ramp_rate
 #Set to true if the robot has mechanisms beyond navigation, vision, and swerve
 has_mechanisms = True
 
+# swerve_drive_config = SparkMaxConfig()
+# swerve_drive_config.openLoopRampRate=0.25 # seconds
+# swerve_drive_config.closedLoopRampRate=0.25
+# swerve_drive_config.smartCurrentLimit(40)
+# swerve_drive_config.inverted = False
+# swerve_drive_config.IdleMode = SparkMaxConfig.IdleMode.kBrake
+
+
+# swerve_turn_config = SparkMaxConfig()
+# swerve_turn_config.openLoopRampRate=0.25 # seconds
+# swerve_turn_config.closedLoopRampRate=0.25
+# swerve_turn_config.smartCurrentLimit(30)
+# swerve_turn_config.inverted = True
+# swerve_turn_config.IdleMode = SparkMaxConfig.IdleMode.kBrake
+
+#drive_motor_config = SparkMaxConfig()
 
 default_angle_pid = PIDConfig(p=.6, i=0.0, d=0.2, wrapping=OptionalRange(min=0, max=math.pi * 2), tolerance=None)
 # Be Careful when adding an i value to the drive pid, it can cause the robot to drive very fast
@@ -80,13 +98,9 @@ physical_properties = PhysicalConfig(wheel_diameter_cm=10.16,
 
 swerve_modules = {ModulePosition.front_left:
                       SwerveModuleConfig(drive_motor=MotorConfig(id=10, inverted=False,
-                                                                 open_ramp_rate=swerve_ramp_rate.drive,
-                                                                 closed_ramp_rate=swerve_ramp_rate.drive,
-                                                                 current_limit=swerve_current_limit.drive),
+                                                                 motor_config = 0),
                                          angle_motor=MotorConfig(id=11, inverted=True,
-                                                                 open_ramp_rate=swerve_ramp_rate.angle,
-                                                                 closed_ramp_rate=swerve_ramp_rate.angle,
-                                                                 current_limit=swerve_current_limit.angle),
+                                                                 motor_config = 1),
                                          encoder=EncoderConfig(id_val=None, offset=None, conversion_factor=math.pi * 2,
                                                                inverted=False),
                                          location=(11.75, 12.75),
@@ -94,13 +108,9 @@ swerve_modules = {ModulePosition.front_left:
                                          drive_pid=default_drive_pid),
                   ModulePosition.front_right:
                       SwerveModuleConfig(drive_motor=MotorConfig(id=12, inverted=False,
-                                                                 open_ramp_rate=swerve_ramp_rate.drive,
-                                                                 closed_ramp_rate=swerve_ramp_rate.drive,
-                                                                 current_limit=swerve_current_limit.drive),
+                                                                 motor_config = 0),
                                          angle_motor=MotorConfig(id=13, inverted=True,
-                                                                 open_ramp_rate=swerve_ramp_rate.angle,
-                                                                 closed_ramp_rate=swerve_ramp_rate.angle,
-                                                                 current_limit=swerve_current_limit.angle),
+                                                                 motor_config = 1),
                                          encoder=EncoderConfig(id_val=None, offset=None, conversion_factor=math.pi * 2,
                                                                inverted=False),
                                          location=(11.75, -12.75),
@@ -108,13 +118,9 @@ swerve_modules = {ModulePosition.front_left:
                                          drive_pid=default_drive_pid),
                   ModulePosition.back_right:
                       SwerveModuleConfig(drive_motor=MotorConfig(id=14, inverted=False,
-                                                                 open_ramp_rate=swerve_ramp_rate.drive,
-                                                                 closed_ramp_rate=swerve_ramp_rate.drive,
-                                                                 current_limit=swerve_current_limit.drive),
+                                                                 motor_config = 0),
                                          angle_motor=MotorConfig(id=15, inverted=True,
-                                                                 open_ramp_rate=swerve_ramp_rate.angle,
-                                                                 closed_ramp_rate=swerve_ramp_rate.angle,
-                                                                 current_limit=swerve_current_limit.angle),
+                                                                 motor_config = 1),
                                          encoder=EncoderConfig(id_val=None, offset=None, conversion_factor=math.pi * 2,
                                                                inverted=False),
                                          location=(-11.75, -12.75),
@@ -122,13 +128,9 @@ swerve_modules = {ModulePosition.front_left:
                                          drive_pid=default_drive_pid),
                   ModulePosition.back_left:
                       SwerveModuleConfig(drive_motor=MotorConfig(id=16, inverted=False,
-                                                                 open_ramp_rate=swerve_ramp_rate.drive,
-                                                                 closed_ramp_rate=swerve_ramp_rate.drive,
-                                                                 current_limit=swerve_current_limit.drive),
+                                                                 motor_config = 0),
                                          angle_motor=MotorConfig(id=17, inverted=True,
-                                                                 open_ramp_rate=swerve_ramp_rate.angle,
-                                                                 closed_ramp_rate=swerve_ramp_rate.angle,
-                                                                 current_limit=swerve_current_limit.angle),
+                                                                 motor_config = 1),
                                          encoder=EncoderConfig(id_val=None, offset=None, conversion_factor=math.pi * 2,
                                                                inverted=False),
                                          location=(-11.75, -12.75),
